@@ -23,7 +23,7 @@ public class CommonConfig implements DynamicConfigable {
 
     private static final String       DEFAULT_SERVER_URL_HEARTBEAT      = "/clientManagement/dianping.firewall.server.heartbeat";
     private static final String       DEFAULT_SERVER_URL_RELEASE        = "/clientManagement/dianping.firewall.server.release";
-    private static final String       DEFAULT_SERVER_ROOT               = "http://localhost:8081";
+    private static final String       DEFAULT_SERVER_ROOT               = "http://192.168.26.38:8080";
     private static final String       DEFAULT_SERVER_URL_BLOCK_EVENT    = "/clientManagement/dianping.firewall.server.blockevent";
     private static final String       DEFAULT_SERVER_URL_ADD_HIPPO      = "/hippoReceiver/dianping.firewall.server.addhippo";
 

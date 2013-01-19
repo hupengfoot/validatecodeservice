@@ -80,13 +80,13 @@ public class ValidcodeServiceImpl extends HttpServlet {
 
 	private void checkValidateCode(HttpServletRequest request, HttpServletResponse response) {
 		String validateCode = request.getParameter("vode");
+		String redirectUrl = request.getHeader("Referer");
 		if (isMatchValidateCode(request, validateCode)) {
 			PolicyConfig.getInstance().getDenyIPAddressRate().remove(StringUtils.emptyIfNull(RequestUtils.getRemoteIp(request)));
 
 			try {
 				releaseBlock(StringUtils.emptyIfNull(RequestUtils.getRemoteIp(request)), StringUtils.emptyIfNull(RequestUtils
 						.escapeVid(getCookie(request, "_hc.v"))));
-				String redirectUrl = request.getHeader("Referer");
 				if (StringUtils.isBlank(redirectUrl)) {
 					redirectUrl = "www.dianping.com";
 				}
@@ -96,7 +96,7 @@ public class ValidcodeServiceImpl extends HttpServlet {
 			}
 		} else {
 			try {
-				response.sendRedirect("http://www.baidu.com");
+				response.sendRedirect(redirectUrl);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
